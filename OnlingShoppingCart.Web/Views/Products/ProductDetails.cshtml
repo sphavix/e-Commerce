@@ -1,0 +1,50 @@
+﻿@model OnlingShoppingCart.Web.Models.ViewModels.Product.ProductDetailsViewModel
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>Product Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+       
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="/images/@Model.ProductImage" width="200" height="200" class="img-thumbnail"/>
+        </dd>
+    </dl>
+</div>
+<br />
+<div>
+    <b>Categories:</b>
+    @foreach(var item in Model.CategoryName){
+        <span>@item.Name</span>
+    }
+</div>
+<div>
+    <a asp-action="UpdateProduct" asp-controller="Products" asp-route-id="@Model.Id" class="btn btn-sm btn-warning rounded-0">Edit</a>
+    @*@Html.ActionLink("Edit", "UpdateProduct", new { id = Model.Id }) |*@
+    <a asp-action="Index" class="btn btn-primary btn-sm rounded-0">Back to List</a>
+</div>
